@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- PWA CONFIG -->
+    <meta name="theme-color" content="#ff8c00" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" href="assets/icons/icon-192.png" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <title>Armor Vision Launcher</title>
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/hud.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <!-- FONTS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="theme-amber">
+    <!-- GRID BACKGROUND -->
+    <div class="av-grid-bg"></div>
+    <div class="av-glow-overlay"></div>
+
+    <!-- ROOT CONTAINER -->
+    <div class="av-root">
+      <!-- HEADER TITLE -->
+      <header class="av-header">
+        <div class="av-header-title">ARMOR VISION</div>
+        <div class="av-header-sub">TACTICAL OS v2.4.9</div>
+      </header>
+
+      <!-- SEARCH BAR -->
+      <section class="av-search-wrapper">
+        <div class="av-search-bar">
+          <div class="av-search-icon"></div>
+          <input
+            id="search-input"
+            class="av-search-input"
+            placeholder="RECHERCHER..."
+            autocomplete="off"
+          />
+        </div>
+      </section>
+
+      <!-- MAIN HUD CARD -->
+      <section class="av-main-card">
+        <!-- TOP STATUS (BATTERY + TIME) -->
+        <div class="av-top-row">
+          <div class="av-battery" id="battery-circle">
+            <div class="av-battery-inner">
+              <div class="av-battery-icon">🔋</div>
+              <div id="battery-level" class="av-battery-level">100%</div>
+              <div class="av-battery-core">CORE</div>
+            </div>
+          </div>
+
+          <div class="av-time-block">
+            <div class="av-time-row">
+              <span id="av-time">13:58</span>
+            </div>
+            <div class="av-time-row date-line">
+              <span id="av-date">TUE, NOV 25</span>
+            </div>
+
+            <div class="av-status-row">
+              <div id="vpn-pill" class="av-vpn-pill">
+                UNSECURED<br />VPN DISABLED
+              </div>
+              <div id="lang-pill" class="av-lang-pill">FR</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ICON SHORTCUT ROW -->
+        <div class="av-icon-row">
+          <div class="av-icon-button" data-action="drawer">
+            <div class="av-icon-bars"><div></div></div>
+          </div>
+          <div class="av-icon-button" data-action="files">
+            <div class="av-icon-folder"></div>
+          </div>
+          <div class="av-icon-button" data-action="weather">
+            <div class="av-icon-sun"></div>
+          </div>
+          <div class="av-icon-button" data-action="settings">
+            <div class="av-icon-gear"></div>
+          </div>
+          <div class="av-icon-button" data-action="help">
+            <div class="av-icon-help">?</div>
+          </div>
+        </div>
+
+        <!-- CENTER AI HUD -->
+        <div class="av-center">
+          <div class="av-ai-circle" id="ai-circle">
+            <div class="av-ai-symbol">
+              <div class="av-ai-core-dot"></div>
+            </div>
+          </div>
+          <div class="av-ai-text" id="ai-status-text">
+            Hello, how can I assist you?
+          </div>
+        </div>
+
+        <!-- COMMAND BAR -->
+        <div class="av-command-bar">
+          <div id="command-placeholder" class="av-command-placeholder">
+            Speak or type command...
+          </div>
+          <div id="mic-button" class="av-mic-button">
+            <div class="av-mic-icon"></div>
+          </div>
+        </div>
+
+        <!-- MUSIC PLAYER (STATIC FOR NOW) -->
+        <div class="av-player">
+          <div class="av-player-header">
+            <div class="av-player-icon">
+              <div class="av-player-note"></div>
+            </div>
+            <div class="av-player-text">
+              <div class="av-player-title">Protocol Omega</div>
+              <div class="av-player-sub">System Core</div>
+            </div>
+          </div>
+
+          <div class="av-player-controls">
+            <div class="av-player-btn" id="btn-prev">
+              <div class="av-player-btn-icon"></div>
+            </div>
+            <div class="av-player-btn play" id="btn-play">
+              <div class="av-player-btn-icon play"></div>
+            </div>
+            <div class="av-player-btn" id="btn-next">
+              <div class="av-player-btn-icon"></div>
+            </div>
+          </div>
+
+          <div class="av-progress">
+            <div id="progress-inner" class="av-progress-inner"></div>
+          </div>
+        </div>
+
+        <!-- BOTTOM NAVIGATION -->
+        <nav class="av-bottom-nav">
+          <div class="av-nav-item" data-action="phone">
+            <div class="av-nav-icon av-phone-icon"></div>
+            <div class="av-nav-label">TÉLÉPHONE</div>
+          </div>
+
+          <div class="av-nav-item" data-action="messages">
+            <div class="av-nav-icon av-msg-icon"></div>
+            <div class="av-nav-label">MESSAGES</div>
+          </div>
+
+          <div class="av-nav-item" data-action="net">
+            <div class="av-nav-icon av-net-icon"></div>
+            <div class="av-nav-label">NET</div>
+          </div>
+
+          <div class="av-nav-item" data-action="gps">
+            <div class="av-nav-icon av-gps-icon"></div>
+            <div class="av-nav-label">GPS</div>
+          </div>
+
+          <div class="av-nav-item" data-action="data">
+            <div class="av-nav-icon av-data-icon"></div>
+            <div class="av-nav-label">DATA</div>
+          </div>
+        </nav>
+      </section>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script src="js/core.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/voice.js"></script>
+    <script src="js/battery.js"></script>
+    <script src="js/system.js"></script>
+    <script src="js/gps.js"></script>
+
+    <!-- REGISTER PWA -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("service-worker.js")
+          .catch((err) => console.warn("SW ERROR:", err));
+      }
+    </script>
+  </body>
+</html>
