@@ -1,0 +1,231 @@
+/* -----------------------------------------------------
+   ARMOR VISION — HUD ANIMATIONS
+   Version: 1.0
+   Option D: Mix holographique + tactique
+------------------------------------------------------*/
+
+/* AI CORE PULSE *************************************************/
+
+@keyframes av-core-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 14px var(--accent-soft);
+  }
+  50% {
+    transform: scale(1.18);
+    box-shadow: 0 0 32px var(--accent);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 14px var(--accent-soft);
+  }
+}
+
+.av-ai-core-dot {
+  animation: av-core-pulse 2.1s infinite ease-in-out;
+}
+
+/* AI CIRCLE ROTATION ********************************************/
+
+@keyframes av-circle-scan {
+  0% {
+    transform: rotate(0deg);
+    border-color: var(--accent-soft);
+  }
+  50% {
+    border-color: var(--accent);
+  }
+  100% {
+    transform: rotate(360deg);
+    border-color: var(--accent-soft);
+  }
+}
+
+.av-ai-circle::before {
+  animation: av-circle-scan 14s infinite linear;
+  opacity: 0.6;
+}
+
+/* SOFT GLOW ANIMATION ********************************************/
+
+@keyframes av-soft-glow {
+  0% {
+    box-shadow: 0 0 12px var(--accent-soft);
+  }
+  50% {
+    box-shadow: 0 0 28px var(--accent);
+  }
+  100% {
+    box-shadow: 0 0 12px var(--accent-soft);
+  }
+}
+
+.av-battery,
+.av-ai-circle,
+.av-icon-button,
+.av-nav-item,
+.av-mic-button,
+.av-player {
+  animation: av-soft-glow 4.8s infinite ease-in-out;
+}
+
+/* TACTICAL LINE SCAN ********************************************/
+
+@keyframes av-line-scan {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0.05;
+  }
+  50% {
+    opacity: 0.12;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.av-main-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 22%;
+  top: -20%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--accent-soft),
+    transparent
+  );
+  animation: av-line-scan 7s infinite ease-in-out;
+  pointer-events: none;
+}
+
+/* GRID PULSE *****************************************************/
+
+@keyframes av-grid-pulse {
+  0% {
+    opacity: 0.28;
+  }
+  50% {
+    opacity: 0.45;
+  }
+  100% {
+    opacity: 0.28;
+  }
+}
+
+.av-grid-bg {
+  animation: av-grid-pulse 9s infinite;
+}
+
+/* MICRO BUTTON PULSE ********************************************/
+
+@keyframes av-mic-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 8px var(--accent-soft);
+    border-color: var(--accent-soft);
+  }
+  50% {
+    transform: scale(1.09);
+    box-shadow: 0 0 20px var(--accent);
+    border-color: var(--accent);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 8px var(--accent-soft);
+    border-color: var(--accent-soft);
+  }
+}
+
+.av-mic-button.listening {
+  animation: av-mic-pulse 1.2s infinite ease-in-out;
+}
+
+/* AI LISTENING EFFECT ********************************************/
+
+@keyframes av-ai-listen-wave {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  60% {
+    opacity: 0.25;
+    transform: scale(1.4);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.85);
+  }
+}
+
+.av-ai-circle.listening::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  animation: av-ai-listen-wave 1.8s infinite ease-out;
+}
+
+/* NAV ITEM HOVER *************************************************/
+
+.av-nav-item:hover {
+  background: radial-gradient(circle, var(--accent-soft), var(--bg));
+  border-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent-soft);
+}
+
+/* ICON BUTTON HOVER **********************************************/
+
+.av-icon-button:hover {
+  background: radial-gradient(circle, var(--accent-soft), var(--bg));
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px var(--accent-soft);
+}
+
+/* PLAYER BUTTON HOVER ********************************************/
+
+.av-player-btn:hover {
+  background: radial-gradient(circle, var(--accent), var(--bg));
+  box-shadow: 0 0 14px var(--accent-soft);
+}
+
+/* TEXT SCAN HIGHLIGHT ********************************************/
+
+@keyframes av-text-scan {
+  0% {
+    text-shadow: 0 0 2px var(--accent-soft);
+  }
+  50% {
+    text-shadow: 0 0 12px var(--accent);
+  }
+  100% {
+    text-shadow: 0 0 2px var(--accent-soft);
+  }
+}
+
+#ai-status-text.listening {
+  animation: av-text-scan 1.9s infinite ease-in-out;
+}
+
+/* AI STATUS TYPING EFFECT ****************************************/
+
+@keyframes av-type {
+  from {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.av-typing {
+  overflow: hidden;
+  animation: av-type 1.4s steps(20);
+}
+
+/* END OF HUD.CSS *************************************************/
