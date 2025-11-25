@@ -1,0 +1,42 @@
+/* -----------------------------------------------------
+   ARMOR VISION LAUNCHER — MAIN CSS
+   Version: 1.0
+   Theme: Amber HUD + Blue Neon
+------------------------------------------------------*/
+
+/* VARIABLES — THEMES ********************************************/
+
+:root {
+  --font-tech: "Orbitron", sans-serif;
+  --font-main: "Rajdhani", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* THEME AMBER (DEFAULT) */
+  --accent: #ff8c00;
+  --accent-soft: rgba(255, 140, 0, 0.4);
+  --accent-strong: #ffb347;
+  --bg: #080403;
+  --bg2: #120a07;
+  --grid-line: rgba(255, 140, 0, 0.06);
+  --text-main: #ffe9c4;
+  --text-soft: #a87b4b;
+  --text-muted: #795f46;
+}
+
+/* THEME: BLUE NEON **********************************************/
+
+body.theme-blue {
+  --accent: #42c6ff;
+  --accent-soft: rgba(66, 198, 255, 0.35);
+  --accent-strong: #9ae8ff;
+  --bg: #02050a;
+  --bg2: #04111d;
+  --grid-line: rgba(66, 198, 255, 0.06);
+  --text-main: #daf5ff;
+  --text-soft: #7ab8d6;
+  --text-muted: #5e88a3;
+}
+
+/* GLOBAL RESET **************************************************/
+
+*
