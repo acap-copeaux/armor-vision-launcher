@@ -4,16 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Armor Vision Launcher</title>
+    <title>Armor Vision – Tactical OS</title>
 
-    <!-- CSS -->
+    <!-- CORE CSS -->
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/hud.css" />
     <link rel="stylesheet" href="css/responsive.css" />
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet" />
-
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&family=JetBrains+Mono:wght@300;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -22,10 +21,10 @@
     <div class="av-grid-bg"></div>
     <div class="av-glow-overlay"></div>
 
-    <!-- ROOT CONTAINER -->
+    <!-- LAYOUT WRAPPER -->
     <div class="av-root">
 
-        <!-- HEADER -->
+        <!-- TITLE -->
         <header class="av-header">
             <div class="av-header-title">ARMOR VISION</div>
             <div class="av-header-sub">TACTICAL OS v2.4.9</div>
@@ -35,128 +34,93 @@
         <div class="av-search-wrapper">
             <div class="av-search-bar">
                 <div class="av-search-icon"></div>
-                <input class="av-search-input" type="text" placeholder="Rechercher..." />
+                <input type="text" class="av-search-input" placeholder="RECHERCHER..." />
             </div>
         </div>
 
-        <!-- MAIN CARD -->
-        <div class="av-main-card">
+        <!-- ROW battery + time -->
+        <div class="av-system-row">
 
-            <!-- TOP ROW -->
-            <div class="av-top-row">
-
-                <!-- BATTERY -->
-                <div class="av-battery">
-                    <div class="av-battery-inner">
-                        <div class="av-battery-icon">🔋</div>
-                        <div class="av-battery-level" id="battery-level">--%</div>
-                        <div class="av-battery-core">CORE</div>
-                    </div>
-                </div>
-
-                <!-- TIME -->
-                <div class="av-time-block">
-                    <div id="av-time">--:--</div>
-                    <div id="av-date">---</div>
-                </div>
-
-            </div>
-
-            <!-- STATUS -->
-            <div class="av-status-row">
-                <div class="av-vpn-pill">UNSECURED<br>VPN DISABLED</div>
-                <div class="av-lang-pill">FR</div>
-            </div>
-
-            <!-- ICON ROW -->
-            <div class="av-icon-row">
-                <div class="av-icon-button"><div class="av-icon-bars"><div></div></div></div>
-                <div class="av-icon-button"><div class="av-icon-folder"></div></div>
-                <div class="av-icon-button"><div class="av-icon-weather">☀️</div></div>
-                <div class="av-icon-button"><div class="av-icon-gear">⚙️</div></div>
-                <div class="av-icon-button"><div class="av-icon-help">?</div></div>
-            </div>
-
-            <!-- CENTER AI -->
-            <div class="av-center">
-                <div class="av-ai-circle">
-                    <div class="av-ai-symbol">
-                        <div class="av-ai-core-dot"></div>
-                    </div>
-                </div>
-                <div id="ai-status-text">Hello, how can I assist you?</div>
-            </div>
-
-            <!-- COMMAND BAR -->
-            <div class="av-command-bar">
-                <div class="av-command-placeholder">Speak or type command...</div>
-                <div class="av-mic-button" id="mic-btn">
-                    <div class="av-mic-icon"></div>
+            <!-- BATTERY -->
+            <div class="av-battery">
+                <div class="av-battery-inner">
+                    <div class="av-battery-ring"></div>
+                    <div class="av-battery-level" id="battery-level">--%</div>
+                    <div class="av-battery-core">CORE</div>
                 </div>
             </div>
 
-            <!-- MUSIC PLAYER -->
-            <div class="av-player">
-                <div class="av-player-header">
-                    <div class="av-player-icon">
-                        <div class="av-player-note"></div>
-                    </div>
-                    <div>
-                        <div>Protocol Omega</div>
-                        <div class="av-track-artist">System Core</div>
-                    </div>
-                </div>
-
-                <div class="av-player-controls">
-                    <div class="av-player-btn">⏮️</div>
-                    <div class="av-player-btn play">▶️</div>
-                    <div class="av-player-btn">⏭️</div>
-                </div>
-
-                <div class="av-progress">
-                    <div class="av-progress-inner"></div>
-                </div>
+            <!-- TIME -->
+            <div class="av-time-block">
+                <div id="av-time">--:--</div>
+                <div id="av-date">---</div>
             </div>
 
         </div>
 
-        <!-- BOTTOM NAVIGATION -->
+        <!-- VPN + LANGUAGE -->
+        <div class="av-status-row">
+            <div class="av-vpn-pill">UNSECURED<br>VPN DISABLED</div>
+            <div class="av-lang-pill" id="language-btn">fr-FR</div>
+        </div>
+
+        <!-- ICON BUTTONS -->
+        <div class="av-icon-row">
+            <div class="av-icon-button"><div class="av-icon-bars"></div></div>
+            <div class="av-icon-button"><div class="av-icon-folder"></div></div>
+            <div class="av-icon-button"><div class="av-icon-weather"></div></div>
+            <div class="av-icon-button"><div class="av-icon-gear"></div></div>
+            <div class="av-icon-button"><div class="av-icon-help"></div></div>
+        </div>
+
+        <!-- AI CENTER -->
+        <div class="av-center">
+            <div class="av-ai-circle">
+                <div class="av-ai-symbol">
+                    <div class="av-ai-core-dot"></div>
+                </div>
+            </div>
+            <div id="ai-status-text">Hello, how can I assist you?</div>
+        </div>
+
+        <!-- COMMAND BAR -->
+        <div class="av-command-bar">
+            <div class="av-command-placeholder">Speak or type command...</div>
+            <div class="av-mic-button" id="mic-btn"></div>
+        </div>
+
+        <!-- MUSIC CARD -->
+        <div class="av-player">
+            <div class="av-player-header">
+                <div class="av-player-icon"></div>
+                <div>
+                    <div>Protocol Omega</div>
+                    <div class="av-track-artist">System Core</div>
+                </div>
+            </div>
+
+            <div class="av-player-controls">
+                <div class="av-player-btn">⏮️</div>
+                <div class="av-player-btn play">▶️</div>
+                <div class="av-player-btn">⏭️</div>
+            </div>
+
+            <div class="av-progress"><div class="av-progress-inner"></div></div>
+        </div>
+
+        <!-- NAVIGATION BAR -->
         <nav class="av-bottom-nav">
-            <div class="av-nav-item">
-                <div>📞</div>
-                <div class="av-nav-label">Téléphone</div>
-            </div>
-
-            <div class="av-nav-item">
-                <div>💬</div>
-                <div class="av-nav-label">Messages</div>
-            </div>
-
-            <div class="av-nav-item">
-                <div>🌐</div>
-                <div class="av-nav-label">Net</div>
-            </div>
-
-            <div class="av-nav-item">
-                <div>📍</div>
-                <div class="av-nav-label">GPS</div>
-            </div>
-
-            <div class="av-nav-item">
-                <div>📅</div>
-                <div class="av-nav-label">Data</div>
-            </div>
+            <div class="av-nav-item"><div class="av-nav-icon">📞</div><div class="av-nav-label">Téléphone</div></div>
+            <div class="av-nav-item"><div class="av-nav-icon">💬</div><div class="av-nav-label">Messages</div></div>
+            <div class="av-nav-item"><div class="av-nav-icon">🌐</div><div class="av-nav-label">Net</div></div>
+            <div class="av-nav-item"><div class="av-nav-icon">📍</div><div class="av-nav-label">GPS</div></div>
+            <div class="av-nav-item"><div class="av-nav-icon">📅</div><div class="av-nav-label">Data</div></div>
         </nav>
 
     </div>
 
-    <!-- JS SCRIPTS -->
+    <!-- JS -->
     <script src="js/core.js"></script>
-    <script src="js/ui.js"></script>
-    <script src="js/voice.js"></script>
-    <script src="js/battery.js"></script>
-    <script src="js/gps.js"></script>
-    <script src="js/system.js"></script>
-
 </body>
+
 </html>
