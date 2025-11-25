@@ -1,562 +1,82 @@
-/* -----------------------------------------------------
-   ARMOR VISION LAUNCHER — MAIN CSS
-   Version: 1.0
-   Theme: Amber HUD + Blue Neon
-------------------------------------------------------*/
-
-/* VARIABLES — THEMES ********************************************/
-
-:root {
-  --font-tech: "Orbitron", sans-serif;
-  --font-main: "Rajdhani", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
-
-  /* THEME AMBER (DEFAULT) */
-  --accent: #ff8c00;
-  --accent-soft: rgba(255, 140, 0, 0.4);
-  --accent-strong: #ffb347;
-  --bg: #080403;
-  --bg2: #120a07;
-  --grid-line: rgba(255, 140, 0, 0.06);
-  --text-main: #ffe9c4;
-  --text-soft: #a87b4b;
-  --text-muted: #795f46;
-}
-
-/* THEME: BLUE NEON **********************************************/
-
-body.theme-blue {
-  --accent: #42c6ff;
-  --accent-soft: rgba(66, 198, 255, 0.35);
-  --accent-strong: #9ae8ff;
-  --bg: #02050a;
-  --bg2: #04111d;
-  --grid-line: rgba(66, 198, 255, 0.06);
-  --text-main: #daf5ff;
-  --text-soft: #7ab8d6;
-  --text-muted: #5e88a3;
-}
-
-/* GLOBAL RESET **************************************************/
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body {
-  height: 100%;
-  background: var(--bg);
-  color: var(--text-main);
-  font-family: var(--font-main);
-  -webkit-font-smoothing: antialiased;
-  overflow: hidden;
-}
-
-/* BACKGROUND GRID ***********************************************/
-
-.av-grid-bg {
-  position: fixed;
-  inset: 0;
-  background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
-  background-size: 32px 32px;
-  pointer-events: none;
-  z-index: -2;
-  opacity: 0.4;
-}
-
-.av-glow-overlay {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at top, var(--accent-soft), transparent 70%);
-  pointer-events: none;
-  z-index: -1;
-}
-
-/* ROOT LAYOUT *****************************************************/
-
-.av-root {
-  position: relative;
-  width: 100%;
-  max-width: 480px;
-  margin: 0 auto;
-  height: 100vh;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* HEADER **********************************************************/
-
-.av-header {
-  text-align: center;
-}
-
-.av-header-title {
-  font-family: var(--font-tech);
-  letter-spacing: 0.25em;
-  font-size: 24px;
-  color: var(--accent);
-  text-shadow: 0 0 20px var(--accent-soft);
-}
-
-.av-header-sub {
-  margin-top: 4px;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
-  color: var(--text-muted);
-}
-
-/* SEARCH BAR ******************************************************/
-
-.av-search-wrapper {
-  margin-top: 6px;
-}
-
-.av-search-bar {
-  width: 100%;
-  border: 1px solid var(--accent-soft);
-  border-radius: 30px;
-  padding: 10px 16px;
-  background: linear-gradient(to bottom, var(--bg2), var(--bg));
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
-}
-
-.av-search-icon {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid var(--accent);
-  position: relative;
-}
-
-.av-search-icon::after {
-  content: "";
-  position: absolute;
-  width: 2px;
-  height: 8px;
-  bottom: -2px;
-  right: -3px;
-  transform: rotate(45deg);
-  background: var(--accent);
-  border-radius: 1px;
-}
-
-.av-search-input {
-  flex: 1;
-  background: transparent;
-  border: none;
-  outline: none;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-soft);
-}
-
-.av-search-input::placeholder {
-  color: var(--text-muted);
-}
-
-/* MAIN CARD ******************************************************/
-
-.av-main-card {
-  flex: 1;
-  border: 1px solid var(--accent-soft);
-  border-radius: 18px;
-  background: radial-gradient(circle at top left, var(--bg2), var(--bg) 70%);
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  box-shadow: 0 0 18px rgba(0, 0, 0, 0.7);
-}
-
-/* TOP ROW ********************************************************/
-
-.av-top-row {
-  display: grid;
-  grid-template-columns: 110px 1fr;
-  align-items: center;
-  gap: 12px;
-}
-
-/* BATTERY CIRCLE *************************************************/
-
-.av-battery {
-  width: 95px;
-  height: 95px;
-  border-radius: 50%;
-  border: 2px solid var(--accent);
-  box-shadow: 0 0 16px var(--accent-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.av-battery::before {
-  content: "";
-  position: absolute;
-  inset: 12%;
-  border: 1px dashed var(--accent-soft);
-  border-radius: 50%;
-}
-
-.av-battery-inner {
-  text-align: center;
-}
-
-.av-battery-icon {
-  font-size: 10px;
-  opacity: 0.6;
-}
-
-.av-battery-level {
-  font-size: 18px;
-  font-family: var(--font-tech);
-  color: var(--accent);
-}
-
-.av-battery-core {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--text-muted);
-}
-
-/* TIME BLOCK ******************************************************/
-
-.av-time-block {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-#av-time {
-  font-family: var(--font-tech);
-  font-size: 26px;
-  color: var(--accent);
-  text-shadow: 0 0 16px var(--accent-soft);
-}
-
-#av-date {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--text-muted);
-}
-
-/* STATUS ROW ******************************************************/
-
-.av-status-row {
-  display: flex;
-  gap: 8px;
-  margin-top: 6px;
-}
-
-.av-vpn-pill {
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  border: 1px solid var(--accent-soft);
-  padding: 6px 10px;
-  border-radius: 8px;
-  text-transform: uppercase;
-  font-family: var(--font-mono);
-  background: rgba(35, 15, 4, 0.7);
-  color: #ff4b3a;
-  cursor: pointer;
-}
-
-.av-lang-pill {
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  border: 1px solid var(--accent-soft);
-  padding: 6px 10px;
-  border-radius: 8px;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-/* ICON ROW *******************************************************/
-
-.av-icon-row {
-  display: flex;
-  gap: 8px;
-}
-
-.av-icon-button {
-  flex: 1;
-  border: 1px solid var(--accent-soft);
-  border-radius: 12px;
-  background: radial-gradient(circle at top, var(--bg2), var(--bg));
-  padding: 10px 0;
-  display: flex;
-  justify-content: center;
-  cursor: pointer;
-  position: relative;
-  box-shadow: 0 0 12px var(--accent-soft);
-}
-
-/* GENERIC ICONS **************************************************/
-
-.av-icon-bars div,
-.av-icon-bars::before,
-.av-icon-bars::after {
-  content: "";
-  position: absolute;
-  left: 3px;
-  right: 3px;
-  height: 2px;
-  background: var(--accent);
-  border-radius: 1px;
-}
-
-.av-icon-bars::before {
-  top: 4px;
-}
-
-.av-icon-bars div {
-  top: 9px;
-}
-
-.av-icon-bars::after {
-  bottom: 4px;
-}
-
-/* The folder icon */
-.av-icon-folder {
-  width: 18px;
-  height: 14px;
-  border: 2px solid var(--accent);
-  border-radius: 4px;
-  position: relative;
-}
-
-.av-icon-folder::before {
-  content: "";
-  position: absolute;
-  left: 1px;
-  top: -5px;
-  width: 12px;
-  height: 6px;
-  border-radius: 4px 4px 0 0;
-  border: 2px solid var(--accent);
-  border-bottom: none;
-}
-
-/* AI CENTER ******************************************************/
-
-.av-center {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-}
-
-.av-ai-circle {
-  width: 150px;
-  height: 150px;
-  border: 2px solid var(--accent);
-  border-radius: 50%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 22px var(--accent-soft);
-  overflow: hidden;
-}
-
-.av-ai-circle::before {
-  content: "";
-  position: absolute;
-  inset: 12%;
-  border: 1px dashed var(--accent-soft);
-  border-radius: 50%;
-}
-
-.av-ai-symbol {
-  width: 68px;
-  height: 68px;
-  border: 2px solid var(--accent-strong);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  box-shadow: 0 0 14px var(--accent-soft);
-}
-
-.av-ai-core-dot {
-  width: 10px;
-  height: 10px;
-  background: var(--accent-strong);
-  border-radius: 50%;
-  box-shadow: 0 0 18px var(--accent-strong);
-}
-
-/* COMMAND BAR ****************************************************/
-
-.av-command-bar {
-  border: 1px solid var(--accent-soft);
-  border-radius: 14px;
-  padding: 8px 12px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(to bottom, var(--bg2), var(--bg));
-}
-
-.av-command-placeholder {
-  flex: 1;
-  font-size: 11px;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
-.av-mic-button {
-  width: 32px;
-  height: 32px;
-  border: 1px solid var(--accent);
-  border-radius: 50%;
-  box-shadow: 0 0 12px var(--accent-soft);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.av-mic-icon {
-  width: 12px;
-  height: 18px;
-  border-radius: 6px;
-  border: 2px solid var(--accent);
-  position: relative;
-}
-
-.av-mic-icon::before {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  width: 10px;
-  height: 2px;
-  background: var(--accent);
-  transform: translateX(-50%);
-}
-
-/* MUSIC PLAYER **************************************************/
-
-.av-player {
-  border: 1px solid var(--accent-soft);
-  border-radius: 16px;
-  padding: 10px 14px;
-  background: linear-gradient(to bottom right, var(--bg2), var(--bg));
-  box-shadow: 0 0 18px rgba(0, 0, 0, 0.7);
-}
-
-.av-player-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.av-player-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
-  background: radial-gradient(circle, var(--accent-soft), var(--bg));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.av-player-note {
-  width: 12px;
-  height: 18px;
-  border: 2px solid var(--accent);
-  border-radius: 4px;
-  position: relative;
-}
-
-.av-player-controls {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 6px;
-}
-
-.av-player-btn {
-  width: 30px;
-  height: 30px;
-  border: 1px solid var(--accent-soft);
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--accent-soft), var(--bg));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.play {
-  width: 38px;
-  height: 38px;
-  box-shadow: 0 0 16px var(--accent-soft);
-}
-
-.av-progress {
-  width: 100%;
-  height: 4px;
-  border-radius: 999px;
-  margin-top: 8px;
-  background: var(--bg2);
-}
-
-.av-progress-inner {
-  width: 22%;
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent-strong), var(--accent));
-  border-radius: 999px;
-}
-
-/* NAVIGATION ******************************************************/
-
-.av-bottom-nav {
-  display: flex;
-  gap: 8px;
-}
-
-.av-nav-item {
-  flex: 1;
-  border: 1px solid var(--accent-soft);
-  border-radius: 14px;
-  padding: 8px 0;
-  background: linear-gradient(to bottom, var(--bg2), var(--bg));
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.av-nav-label {
-  margin-top: 4px;
-  font-size: 8px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
-/* END OF MAIN CSS ************************************************/
-<div id="vpn-pill" class="av-vpn-pill">
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- PWA CONFIG -->
+    <meta name="theme-color" content="#ff8c00" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" type="image/png" href="assets/icons/icon-192.png" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <title>Armor Vision Launcher</title>
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/hud.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+
+    <!-- FONTS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="theme-amber">
+    <!-- GRID BACKGROUND -->
+    <div class="av-grid-bg"></div>
+    <div class="av-glow-overlay"></div>
+
+    <!-- ROOT CONTAINER -->
+    <div class="av-root">
+      <!-- HEADER TITLE -->
+      <header class="av-header">
+        <div class="av-header-title">ARMOR VISION</div>
+        <div class="av-header-sub">TACTICAL OS v2.4.9</div>
+      </header>
+
+      <!-- SEARCH BAR -->
+      <section class="av-search-wrapper">
+        <div class="av-search-bar">
+          <div class="av-search-icon"></div>
+          <input
+            id="search-input"
+            class="av-search-input"
+            placeholder="RECHERCHER..."
+            autocomplete="off"
+          />
+        </div>
+      </section>
+
+      <!-- MAIN HUD CARD -->
+      <section class="av-main-card">
+        <!-- TOP STATUS (BATTERY + TIME) -->
+        <div class="av-top-row">
+          <div class="av-battery" id="battery-circle">
+            <div class="av-battery-inner">
+              <div class="av-battery-icon">🔋</div>
+              <div id="battery-level" class="av-battery-level">100%</div>
+              <div class="av-battery-core">CORE</div>
+            </div>
+          </div>
+
+          <div class="av-time-block">
+            <div class="av-time-row">
+              <span id="av-time">13:58</span>
+            </div>
+            <div class="av-time-row date-line">
+              <span id="av-date">TUE, NOV 25</span>
+            </div>
+
+            <div class="av-status-row">
+              <div id="vpn-pill" class="av-vpn-pill">
                 UNSECURED<br />VPN DISABLED
               </div>
               <div id="lang-pill" class="av-lang-pill">FR</div>
